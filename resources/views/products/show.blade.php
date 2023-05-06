@@ -15,12 +15,12 @@
                                 </div>
                                 <div class="col-sm-8">
 
-                                    @can('update-product', $product)
+                                    {{-- @can('update-product', $product) --}}
                                     <form action="{{ route('products-update',$product->sku )}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         
-                                    @endcan
+                                    {{-- @endcan --}}
                                         <div class="mb-3 row">
                                             <div class="col-sm-3">
                                                 <label for="name">Name <span style="color: red">*</span></label>
@@ -63,14 +63,14 @@
                                                 <input class="form-control" id="image" type="file" accept="image/*" name="image"  @cannot('update-product', $product) disabled @endcannot>
                                             </div>
                                         </div>
-                                    @can('update-product', $product)
+                                    {{-- @can('update-product', $product) --}}
                                         <div class="mb-3 row">
                                             <div class="col-sm-12 text-center">
-                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <button type="submit" id="submit_button" class="btn btn-primary">Update</button>
                                             </div>
                                         </div>
                                     </form>
-                                    @endcan
+                                    {{-- @endcan --}}
                                 </div>
                             </div>
                         </div>

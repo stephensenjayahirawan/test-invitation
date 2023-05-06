@@ -96,7 +96,7 @@ class ManagerProductTest extends TestCase
         $response = $this->actingAs($this->user)->put('/products/update/'. $product->sku, $product->toArray());
 
         $response->assertStatus(302);
-        $response->assertRedirectToRoute('products');
+        $response->assertRedirectToRoute('products-detail', $product->sku);
     }
 
     public function test_see_other_manager_products()

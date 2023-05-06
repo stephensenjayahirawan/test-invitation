@@ -105,6 +105,10 @@
                     reader.readAsDataURL(file);
                 }
             });
+            $("form").submit(function(){
+                $("#submit_button").attr("disabled", true);
+                return true;
+            })
         });
     </script>
 </body>

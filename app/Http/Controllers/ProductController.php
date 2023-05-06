@@ -99,7 +99,7 @@ class ProductController extends Controller
         if(!$product){
             abort(404);
         }
-        if (! Gate::allows('update-product', $product)) {
+        if (! Gate::allows('restore-product', $product)) {
             abort(403);
         }
         
@@ -138,7 +138,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
 
         if($product->save()){
-            return redirect(route('products'))->with('success', 'Successfully add new product');
+            return redirect(route('products-detail',$product->sku))->with('success', 'Successfully add new product');
         }
         return redirect()->back()->with('error', 'Failed to add new product');
     }
