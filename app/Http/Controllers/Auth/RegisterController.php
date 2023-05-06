@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $invitation = Invitation::where('token' , $data['param_token'] )->first();
+        $invitation = Invitation::where('token' , $data['param_token'] )->where('status', 1)->first();
         if(!$invitation){
             abort(404);
         }
@@ -87,7 +87,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm(Request $request)
     {
-        $invitation = Invitation::where('token' , $request->input('token') )->first();
+        $invitation = Invitation::where('token' , $request->input('token') )->where('status', 1)->first();
         if(!$invitation){
             abort(404);
         }
