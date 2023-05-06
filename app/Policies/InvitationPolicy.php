@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Invitation;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -30,4 +31,10 @@ class InvitationPolicy
     {
         return $user->role === 'admin' || $user->role=="manager";
     }
+
+    public function detail(User $user, Invitation $invitation)
+    {
+        return $user->id == $invitation->created_by || $user->role == 'admin';
+    }
+
 }

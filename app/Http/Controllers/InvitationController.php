@@ -26,6 +26,9 @@ class InvitationController extends Controller
         if($request->input('email')){
             $invitations = $invitations->where('email' , 'like', '%'.$request->input('email').'%');
         }
+        if(auth()->user()->role == 'manager'){
+            $invitations = $invitations->where('created_by', auth()->user()->id);
+        }
         $data['title'] = 'Invitation';
         $data['invitations'] = $invitations->paginate(10);
         
@@ -88,12 +91,12 @@ class InvitationController extends Controller
 
     public function show($token)
     {
-        if (!Gate::allows('view-invite')) {
-            abort(403);
-        }
         $invitation = Invitation::where('token', $token)->first();
         if(!$invitation){
             abort(404);
+        }
+        if (!Gate::allows('detail-invitation',$invitation)) {
+            abort(403);
         }
         $data['title'] = 'Invitation';
         $data['invitation'] = $invitation;

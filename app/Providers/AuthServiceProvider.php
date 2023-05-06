@@ -39,8 +39,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-product', [ProductPolicy::class, 'view']);
         Gate::define('create-product', [ProductPolicy::class, 'create']);
         Gate::define('delete-product', [ProductPolicy::class, 'delete']);
+        
         Gate::define('create-invite', [InvitationPolicy::class, 'create']);
         Gate::define('view-invite', [InvitationPolicy::class, 'viewAny']);
+        Gate::define('detail-invitation', [InvitationPolicy::class, 'detail']);
+        
         Gate::define('user-view', [UserPolicy::class, 'viewAny']);
         //
     }
