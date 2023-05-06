@@ -15,18 +15,18 @@
                                 </div>
                                 <div class="col-sm-8">
 
-                                    {{-- @can('update-product', $product) --}}
+                                    @can('restore-product', $product)
                                     <form action="{{ route('products-update',$product->sku )}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         
-                                    {{-- @endcan --}}
+                                    @endcan
                                         <div class="mb-3 row">
                                             <div class="col-sm-3">
                                                 <label for="name">Name <span style="color: red">*</span></label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="name" id="name" value="{{ $product->name }}" required @cannot('update-product', $product) disabled @endcannot>  
+                                                <input type="text" class="form-control" name="name" id="name" value="{{ $product->name }}" required @cannot('restore-product', $product) disabled @endcannot>  
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -34,7 +34,7 @@
                                                 <label for="sku">SKU <span style="color: red">*</span></label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="sku" id="sku" value="{{ $product->sku }}" required  @cannot('update-product', $product) disabled @endcannot>
+                                                <input type="text" class="form-control" name="sku" id="sku" value="{{ $product->sku }}" required  @cannot('restore-product', $product) disabled @endcannot>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -42,7 +42,7 @@
                                                 <label for="description">Description <span style="color: red">*</span></label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <textarea name="description" id="description" cols="30" rows="5" class="form-control" required @cannot('update-product', $product) disabled @endcannot>{{ $product->description }}</textarea>
+                                                <textarea name="description" id="description" cols="30" rows="5" class="form-control" required @cannot('restore-product', $product) disabled @endcannot>{{ $product->description }}</textarea>
                                             </div>
                                         </div>
                                         @if(Auth::user()->role == 'admin')
@@ -60,17 +60,17 @@
                                                 <label for="name">Image</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input class="form-control" id="image" type="file" accept="image/*" name="image"  @cannot('update-product', $product) disabled @endcannot>
+                                                <input class="form-control" id="image" type="file" accept="image/*" name="image"  @cannot('restore-product', $product) disabled @endcannot>
                                             </div>
                                         </div>
-                                    {{-- @can('update-product', $product) --}}
+                                    @can('restore-product', $product)
                                         <div class="mb-3 row">
                                             <div class="col-sm-12 text-center">
                                                 <button type="submit" id="submit_button" class="btn btn-primary">Update</button>
                                             </div>
                                         </div>
                                     </form>
-                                    {{-- @endcan --}}
+                                    @endcan
                                 </div>
                             </div>
                         </div>

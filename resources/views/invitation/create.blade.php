@@ -33,10 +33,10 @@
                                     </div>
                                     <div class="col-sm-9">
                                         <select name="role" id="role" class="form-control" required>
-                                            @can('create-invitation')
+                                            @if (auth()->user()->role == 'admin')                                                
                                             <option value="">--- Select One ---</option>
                                             <option value="admin">Admin</option>
-                                            @endcan
+                                            @endif
                                             <option value="manager">Ratailer Manager</option>
                                         </select>
                                     </div>
