@@ -40,7 +40,7 @@ class AdminProductTest extends TestCase
         $response->assertStatus(403);
     }
 
-    public function test_can_create_products()
+    public function test_cannot_create_products()
     { 
         Storage::fake('public/product');
         $product = [

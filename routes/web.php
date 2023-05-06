@@ -43,10 +43,6 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('users');
-        Route::get('/create', [UserController::class, 'create'])->name('users-create');
-        Route::get('/show/{token}', [UserController::class, 'show'])->name('users-detail');
-        Route::put('/update/{token}', [UserController::class, 'update'])->name('users-update');
-        Route::post('/', [UserController::class, 'store']);
     });
 });
 
