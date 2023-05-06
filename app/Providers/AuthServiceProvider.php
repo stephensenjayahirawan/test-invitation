@@ -7,6 +7,7 @@ namespace App\Providers;
 use App\Models\Product;
 use App\Policies\ProductPolicy;
 use App\Policies\InvitationPolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -21,7 +22,8 @@ class AuthServiceProvider extends ServiceProvider
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
 
         Product::class => ProductPolicy::class,
-        User::class => InvitationPolicy::class,
+        Invitation::class => InvitationPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**
@@ -39,6 +41,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('delete-product', [ProductPolicy::class, 'delete']);
         Gate::define('create-invite', [InvitationPolicy::class, 'create']);
         Gate::define('view-invite', [InvitationPolicy::class, 'viewAny']);
+        Gate::define('user-view', [UserPolicy::class, 'viewAny']);
         //
     }
 }

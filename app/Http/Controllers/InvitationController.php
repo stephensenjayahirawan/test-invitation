@@ -13,13 +13,21 @@ use Illuminate\Support\Facades\Mail;
 
 class InvitationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (!Gate::allows('view-invite')) {
             abort(403);
         }
+        $invitations = Invitation::query();
+        if($request->input('name')){
+            $invitations = $invitations->where('name' , 'like', '%'.$request->input('name').'%');
+        }
+        
+        if($request->input('email')){
+            $invitations = $invitations->where('email' , 'like', '%'.$request->input('email').'%');
+        }
         $data['title'] = 'Invitation';
-        $data['invitations'] = Invitation::paginate(10);
+        $data['invitations'] = $invitations->paginate(10);
         
         return view('invitation.index', $data);
     }

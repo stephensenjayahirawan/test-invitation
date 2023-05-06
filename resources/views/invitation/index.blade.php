@@ -7,9 +7,49 @@
             <div class="card">
                 <div class="card-header">{{ $title }}</div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row mb-2">
                         <div class="col-sm-12">
                             <a href="{{ route('invitations-create') }}" class="btn btn-primary">Create  </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        Filter
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <form action="{{route('invitations')}}">
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-3">
+                                                        Name
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="name" value="{{Request::get('name')}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-3">
+                                                        SKU
+                                                    </div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" name="email" value="{{Request::get('email')}}">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-sm-12 text-center">
+                                                        <button class="btn btn-secondary">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <br>

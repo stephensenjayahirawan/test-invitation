@@ -36,6 +36,11 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ (request()->is('products*')) ? 'active' : '' }}" href="{{ route('products') }}">{{ __('Products') }}</a>
                             </li>
+                            @can('user-view')
+                            <li class="nav-item">
+                                <a class="nav-link {{ (request()->is('users*')) ? 'active' : '' }}" href="{{ route('users') }}">{{ __('Users') }}</a>
+                            </li>
+                            @endcan
                             @can('create-invite')
                                 <li class="nav-item">
                                     <a class="nav-link {{ (request()->is('invitations*')) ? 'active' : '' }}" href="{{ route('invitations') }}">{{ __('Invitation') }}</a>
