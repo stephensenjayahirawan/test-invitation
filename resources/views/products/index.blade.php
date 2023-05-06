@@ -86,7 +86,7 @@
                                             </td>
                                             <td>
                                                 @can('delete-product', $product)
-                                                    <form action="{{ route('products-delete', $product->sku)}}" confirm="Are You Sure to Delete Product with SKU ({{$product->sku}}?)" method="POST">
+                                                    <form action="{{ route('products-delete', $product->sku )}}" confirm="Are You Sure to Delete Product with SKU ({{$product->sku}}?)" method="POST">
                                                         @csrf   
                                                         @method('DELETE')
                                                         <button href="{{ route('products-detail', $product->sku) }}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>

@@ -99,7 +99,7 @@ class ProductController extends Controller
         if(!$product){
             abort(404);
         }
-        if (! Gate::allows('restore-product', $product)) {
+        if (! Gate::allows('update-product', $product)) {
             abort(403);
         }
         

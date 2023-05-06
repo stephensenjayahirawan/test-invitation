@@ -76,7 +76,8 @@ class AdminProductTest extends TestCase
         
         $response = $this->actingAs($this->user)->put('/products/update/'. $product->sku, $product->toArray());
 
-        $response->assertStatus(403);
+        $response->assertStatus(302);
+        $response->assertRedirectToRoute('products-detail', $product->sku);
     }
 
     public function test_delete_products()

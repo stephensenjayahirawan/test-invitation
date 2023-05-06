@@ -29,9 +29,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('products');
         Route::get('/create', [ProductController::class, 'create'])->name('create-product');
-        Route::get('/show/{product}', [ProductController::class, 'show'])->name('products-detail');
-        Route::delete('/delete/{product}', [ProductController::class, 'delete'])->name('products-delete');
-        Route::put('/update/{product}', [ProductController::class, 'update'])->name('products-update');
+        Route::get('/show/{product}', [ProductController::class, 'show'])->where(['product' => '.*'])->name('products-detail');
+        Route::delete('/delete/{product}', [ProductController::class, 'delete'])->where(['product' => '.*'])->name('products-delete');
+        Route::put('/update/{product}', [ProductController::class, 'update'])->where(['product' => '.*'])->name('products-update');
         Route::post('/', [ProductController::class, 'store']);
     });
     Route::prefix('invitations')->group(function () {
